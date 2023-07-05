@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.mjs",
+  "type": "module",
   "scripts": {
     "start": "nodemon index.mjs",
     "start-inspect": "nodemon --inspect index.mjs",

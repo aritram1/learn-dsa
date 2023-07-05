@@ -1,7 +1,6 @@
-let util = {
+export default class util{
     // Util function
-    logTime(task, then) {
-        console.log(`${task} took ${Date.now() - then}ms`);
+    timeIt(task, start) {
+        console.log(`${task} took ${Date.now() - start}ms`);
     }
 }
-module.exports = util;

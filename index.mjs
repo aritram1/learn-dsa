@@ -1,15 +1,140 @@
-const TOTAL = 5000000;
+const batchSize = Math.pow(10, 7);
 
-import BinarySearchTree from "./ds/tree/05BinarySearchTree.js";
+// Test LinkedList perf
+import LinkedListTest from './ds/linkedlist/LinkedListTest.js';
+let result = LinkedListTest.run(batchSize);
+result['Batch Size'] = batchSize;
+console.table(result);
 
-let bst = new BinarySearchTree();
-bst.add(12);
-bst.add(15);
-bst.add(17);
-bst.add(1);
-bst.add(19);
-bst.traverse('preorder');
-console.log('bst.root-->' + bst.root.val);
+// import TreeTest from './ds/tree/test.js';
+// TreeTest.run(batchSize);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // import util from './util/util.js';
 // let logTime = util.logTime;
@@ -40,7 +165,7 @@ console.log('bst.root-->' + bst.root.val);
 //   count++;
 // }
 // logTime("pop", then);
-let then = Date.now();
+//let then = Date.now();
 
 // let then = Date.now();
 

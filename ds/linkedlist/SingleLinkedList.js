@@ -1,19 +1,101 @@
+import Node from '../node/node.js';
+export default class SingleLinkedList{
+  
+  constructor(){
+    // Create class level properties
+    this.tail = null;
+    this.head = null;
+    this.length = 0;
+  }
 
-class LinkedList {
-  Node = class {
-    constructor(val){
-      
+  init(total){
+    let count = 0;
+    while(count < total){
+      this.add(Math.round(Math.random() * total));
+      count++;
     }
   }
 
-  LinkedList() {}
+  traverse(print) {
+    let all = [];
+    let index = this.tail;
+    while(index){
+      all.push(index.val);
+      index = index.next;
+    }
+    if(print) console.log(all.join(','));
+  }
 
-  traverse() {}
+  // Add a value to a linked list
+  add(val) {
+    // if the LL is empty, add the node as first node
+    if(this.isEmpty()){
+      let firstNode = new Node(val);
+      this.head = firstNode;
+      this.tail = firstNode;
+    }
+    // else
+    else{
+      while(true){ // keep traversing till last
+        if(this.head.next) 
+          this.head = this.head.next;  //  move on
+        else{                                             
+          this.head.next = new Node(val);// finally add the node
+          break;
+        }
+      }
+    }
+    this.length++; //increment the LL length
+  }
 
-  add(val) {}
+  remove(val) {
+    // If the LL is empty nothing to remove
+    if(this.isEmpty()){
+      console.log('nothing to remove');
+      return;
+    }
+    // If the first value is getting removed, reposition the `tail` and decrease the length
+    else if(this.tail.val == val){
+      this.tail = this.tail.next;
+      this.length--;
+    }
+    // Else keep traversing next. Once match is found the previous index's left is set as current index's left
+    // This keeps the current index node dereferenced, like it exists in program but is not referred anymore.
+    // Will be garbage-collected by gc later.
+    else{
+      let prevIndex = this.tail;
+      let index = this.tail.next;
+      while(index){
+        if(index.val == val){
+          console.log(`${val} is successfully removed!`);
+          prevIndex.next = index.next;  // dereferences the matched node from the LL
+          this.length--;
+          break;
+        }
+        else{
+          // The index and previIndex keep 2 adjacent references handy
+          prevIndex = index;  
+          index = index.next;
+        }
+      }
+    }
+  }
 
-  remove(val) {}
+  search(val) {
+    let index = this.tail;
+    let found;
+    while(index){
+      if(index.val == val){
+        found = index;
+        break;
+      }
+      index = index.next;
+    }
+    if(found) console.log(`${val} is successfully searched!`);
+    else console.log(`${val} is not found`);
+  }
 
-  search(val) {}
+  isEmpty(){
+    return (this.tail == null || this.head == null);
+  }
 }
-module.exports = LinkedList;
