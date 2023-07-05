@@ -1,4 +1,11 @@
+
 class LinkedList {
+  Node = class {
+    constructor(val){
+      
+    }
+  }
+
   LinkedList() {}
 
   traverse() {}
