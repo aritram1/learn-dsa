@@ -1,8 +1,8 @@
-import Node from '../node/node.js';
-class QueueTest {
+import Queue from '../queue/Queue.js';
+export default class QueueTest {
   run(){
     // create a queue
-
+    Queue
     // add some elements
 
     // remove some elements
@@ -10,4 +10,3 @@ class QueueTest {
     // print all elements
   }
 }
-module.exports = Queue;

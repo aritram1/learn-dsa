@@ -1,10 +1,17 @@
 const batchSize = Math.pow(10, 7);
+let result;
 
 // Test LinkedList perf
 import LinkedListTest from './ds/linkedlist/LinkedListTest.js';
-let result = LinkedListTest.run(batchSize);
+result = LinkedListTest.run(batchSize);
 result['Batch Size'] = batchSize;
 console.table(result);
+
+// Test Queue performance
+import QueueTest from './ds/queue/QueueTest.js';
+let result = QueueTest.run(batchSize);
+result['Batch Size'] = batchSize;
+console.table(result); 
 
 // import TreeTest from './ds/tree/test.js';
 // TreeTest.run(batchSize);

@@ -1,4 +1,4 @@
-export default class SmartNode {
+export default class Node {
     constructor(val){
         this.val = val; // for all ds
         this.desc = ''; // for all ds, optional

@@ -1,5 +1,5 @@
 import Node from '../node/node.js';
-class Queue {
+export default class Queue {
   Queue() {
     this.head = null;
     this.tail = null;
@@ -62,4 +62,3 @@ class Queue {
     return this.head == null;
   }
 }
-module.exports = Queue;
