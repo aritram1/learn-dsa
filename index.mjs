@@ -10,7 +10,7 @@ result['SLL'] = LinkedListTest.run(batchSize);
 import QueueTest from './ds/_test/QueueTest.js'; 
 result['Queue'] = QueueTest.run(batchSize);
 
-// Test Queue performance
+// Test Stack performance
 import StackTest from './ds/_test/StackTest.js';
 result['Stack'] = StackTest.run(batchSize);
 
