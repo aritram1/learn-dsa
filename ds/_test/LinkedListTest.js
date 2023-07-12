@@ -9,11 +9,12 @@ export default class LinkedListTest{
         let newValue = batchSize + 1;
 
         let ll = new SingleLinkedList();
-        console.log('Size : ' + batchSize.toLocaleString());
-        ll = populateWithData(ll, batchSize);
-        
-        // add
         let start = Date.now();
+        ll = populateWithData(ll, batchSize);
+        result['Init'] = Date.now() - start;
+
+        // add
+        start = Date.now();
         ll.add(newValue);
         result['Add'] = Date.now() - start;
         

@@ -47,14 +47,17 @@ export default class Queue {
 
   search(val) {
     let matchingNode;
+    let found = false;
     let index = this.head;
     while(index){
       if(index.val == val){
         matchingNode = index;
+        found = true;
         break;
       }
       index = index.next;
     }
+    console.log(found ? `${val} is found in Queue` : `${val} is not found in Queue`);
     return matchingNode;
   }
 

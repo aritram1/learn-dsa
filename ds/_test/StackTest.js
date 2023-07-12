@@ -9,10 +9,12 @@ export default class LinkedListTest{
         let newValue = batchSize + 1;
 
         let stack = new Stack();
-        stack = populateWithData(stack, batchSize);
-        
-        // add
         let start = Date.now();
+        stack = populateWithData(stack, batchSize);
+        result['Init'] = Date.now() - start;
+
+        // add
+        start = Date.now();
         stack.add(newValue);
         result['Add'] = Date.now() - start;
         

@@ -9,16 +9,18 @@ export default class QueueTest{
         let newValue = batchSize + 1;
 
         let q = new Queue();
+        let start = Date.now();
         q = populateWithData(q, batchSize);
+        result['Init'] = Date.now() - start;
         
         // add
-        let start = Date.now();
-        q.add(newValue);
+        start = Date.now();
+        q.add(newValue+1);
         result['Add'] = Date.now() - start;
         
         // remove
         start = Date.now();
-        q.remove(newValue);
+        q.remove(newValue+1);
         result['Remove'] = Date.now() - start;
 
         // traverse
@@ -28,7 +30,7 @@ export default class QueueTest{
         
         // search
         start = Date.now();
-        q.search(newValue);
+        q.search(newValue+1);
         result['Search'] = Date.now() - start;
 
         return result;

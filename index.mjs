@@ -1,4 +1,4 @@
-const batchSize = Math.pow(10, 7);
+const batchSize = Math.pow(10, 5);
 let result = {};
 console.log(`Batch Size => ${batchSize}`);
 
