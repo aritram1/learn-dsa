@@ -1,4 +1,4 @@
-import Node from '../node/node.js';
+import Node from '../../../util/node.js';
 export default class SingleLinkedList{
   
   // Create class level properties
@@ -8,12 +8,9 @@ export default class SingleLinkedList{
     this.length = 0;
   }
 
-  init(total){
-    let count = 0;
-    while(count < total){
-      this.add(Math.round(Math.random() * total));
-      count++;
-    }
+  // To check if the LL is empty
+  isEmpty(){
+    return (this.tail == null || this.head == null);
   }
 
   traverse(print) {
@@ -46,6 +43,7 @@ export default class SingleLinkedList{
       }
     }
     this.length++; //increment the LL length
+    return val;
   }
 
   remove(val) {
@@ -91,11 +89,7 @@ export default class SingleLinkedList{
       }
       index = index.next;
     }
-    if(found) console.log(`${val} is successfully searched!`);
-    else console.log(`${val} is not found`);
+    console.log(found ? `${val} is found in LL` : `${val} is not found in LL`);
   }
 
-  isEmpty(){
-    return (this.tail == null || this.head == null);
-  }
 }

@@ -1,6 +1,7 @@
 import util from '../../util/util.js';
-import SingleLinkedList from "./SingleLinkedList.js";
+import SingleLinkedList from "../linear/linkedlist/SingleLinkedList.js";
 const timeIt = new util().timeIt;
+const populateWithData = new util().populateWithData;
 
 export default class LinkedListTest{
     static run(batchSize){
@@ -9,27 +10,27 @@ export default class LinkedListTest{
 
         let ll = new SingleLinkedList();
         console.log('Size : ' + batchSize.toLocaleString());
-        ll.init(batchSize);
-        
-        // traverse
-        let start = Date.now();
-        ll.traverse();
-        result['Traverse'] = Date.now() - start;
+        ll = populateWithData(ll, batchSize);
         
         // add
-        start = Date.now();
+        let start = Date.now();
         ll.add(newValue);
         result['Add'] = Date.now() - start;
-        
-        // search
-        start = Date.now();
-        ll.search(newValue);
-        result['Search'] = Date.now() - start;
         
         // remove
         start = Date.now();
         ll.remove(newValue);
         result['Remove'] = Date.now() - start;
+
+        // traverse
+        start = Date.now();
+        ll.traverse();
+        result['Traverse'] = Date.now() - start;
+        
+        // search
+        start = Date.now();
+        ll.search(newValue);
+        result['Search'] = Date.now() - start;
 
         return result;
     }

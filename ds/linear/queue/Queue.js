@@ -1,4 +1,4 @@
-import Node from '../node/node.js';
+import Node from '../../../util/node.js';
 export default class Queue {
   Queue() {
     this.head = null;
@@ -20,10 +20,10 @@ export default class Queue {
     }
   }
 
-  traverse(){
+  traverse(print){
     let index = this.head;
     while(index){
-      console.log(indexs);
+      if(print) console.log(index.val);
       index = index.next;
     }
   }
