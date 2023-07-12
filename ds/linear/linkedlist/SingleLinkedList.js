@@ -5,6 +5,7 @@ export default class SingleLinkedList{
   constructor(){
     this.head = null;
     this.length = 0;
+    this.debug = false;
   }
 
   // To check if the LL is empty
@@ -12,105 +13,56 @@ export default class SingleLinkedList{
     return this.head == null;
   }
 
-  // Add a value to a linked list
-  add1(val, position) {
-    let newNode = new Node(val);
-    let count = 1;
-    let index = this.head;
-    //early return statements for invalid position value and if the list is empty
-    if(position && position <= 0) return;
-    //console.log(val + ' is considered');
-    if(this.isEmpty()){
-      //console.log(val + 'the LL is empty');
-      this.head = newNode;
-      //console.log(val + ' is added now.');
-      return;
-    }
-    //console.log('COUNT:' + count);
-    while(true){
-        //console.log(val + 'the LL has ' + count + ' elements');
-        if(!index.next){        // List has one node only
-          //console.log(val + ' List has one node only');
-          //console.log(val + 'position is present' + position);
-          if(position == 1){
-            this.head = newNode;
-            newNode.next = index;
-            //console.log(val + ' is added at the start.');
-          }
-          else{
-            index.next = newNode;
-            //console.log(val + ' is added at the end.');
-          }
-          count = count + 1;
-          //console.log('1count incremented to ' + count);
-          break;
-        }
-        else{
-          if(position == count){
-            newNode.next = index.next;
-            count++;
-            break;
-          }
-          else{
-            index = index.next;
-            count++;
-            if(!index) break;
-          } 
-          
-        }
-      
-    }
+  // add a value to a linked list based on `pos` parameter
+  add(val, pos) {
+    if(pos && pos <= 0) return; 
+    if(this.isEmpty() || (!this.isEmpty() && pos == 1))   // add at beginning if list is empty or pos is 1
+      this.addAtBeginning(val);
+    else
+      this.addAtPosition(val, pos);                       // add at defined position otherwise
   }
 
-  add(val, pos){
-    //console.log(val + 'is being considered!');
+  // Add a value to the LL - at beginning
+  addAtBeginning(val){
+    let newNode = new Node(val);
+    let headNode = this.head;
+    newNode.next = headNode;
+    this.head = newNode;
+  }
+
+  // Add a value to a linked list - positionally
+  addAtPosition(val, pos){
+    if(this.debug) console.log(val + 'is being considered!');
     let prev = null;
     let index = this.head;
-    
-    if(pos && pos <= 0) return;
     let newNode = new Node(val);
-    if(this.isEmpty()){
-      //console.log('The LL is empty');
-      this.head = newNode;
-      return;
-    }
-    else{
-      if(pos == 1){
-        let first = this.head;
-        newNode.next = first;
-        this.head = newNode;
-        //console.log(val + ' is added at the start');
+    if(this.debug) console.log('first statement for' + val);
+    let count = 1;
+    while(true){
+      if(count == pos || !index){
+        prev.next = newNode;
+        newNode.next = index;
+        break;
       }
       else{
-        //console.log('first statement for' + val);
-        let count = 1;
-        while(true){
-          if(count == pos || !index){
-            prev.next = newNode;
-            newNode.next = index;
-            break;
-          }
-          else{
-            count++;
-            prev = index;
-            index = index.next;
-          }
-        }
+        count++;
+        prev = index;
+        index = index.next;
       }
     }
+    
   }
 
   remove(val) {
     let index = this.head;              // initially index is the head
     if(this.isEmpty()){                 // List is empty
-      //console.log('nothing to remove');
+      if(this.debug) console.log('nothing to remove');
       return;
     }
-    if(!index.next){                    // List has only 1 element
-      if(index.val == val){
-        this.head = null;
-        return;
-      }
+    if(!index.next && index.val == val){                    // List has only 1 element
+      this.head = null;
+      if(this.debug) console.log(index.val + ' is removed!');
+      return index.val;
     }
     while(index.next){                  // Traverse the linked list if this is not the matching node
       if(index.next.val == val){
@@ -128,9 +80,7 @@ export default class SingleLinkedList{
       all.push(index.val);
       index = index.next;
     }
-    if(print){
-      //console.log(all.join(','));
-    }
+    if(this.debug || print) console.log(all.join(','));
   }
 
   search(val) {
@@ -147,18 +97,3 @@ export default class SingleLinkedList{
   }
 
 }
-
-// let a = new SingleLinkedList();
-// a.add(12);
-// a.traverse(true);
-// a.add(177,1);
-// a.traverse(true);
-// a.add(167,1);
-// a.traverse(true);
-// a.add(57,1);
-// a.traverse(true);
-// a.add(47,1);
-// a.traverse(true);
-// a.add(21,10);
-// //a.remove(12);
-// a.traverse(true);

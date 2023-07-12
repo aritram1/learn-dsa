@@ -6,21 +6,21 @@ const populateWithData = new util().populateWithData;
 export default class QueueTest{
     static run(batchSize){
         let result = {};
-        let newValue = batchSize + 1;
+        let newValue = -1;
 
         let q = new Queue();
         let start = Date.now();
         q = populateWithData(q, batchSize);
-        result['Init'] = Date.now() - start;
+        result[`Init(${batchSize.toLocaleString()})`] = Date.now() - start;
         
         // add
         start = Date.now();
-        q.add(newValue+1);
+        q.add(newValue);
         result['Add'] = Date.now() - start;
         
         // remove
         start = Date.now();
-        q.remove(newValue+1);
+        q.remove(newValue);
         result['Remove'] = Date.now() - start;
 
         // traverse
@@ -30,7 +30,7 @@ export default class QueueTest{
         
         // search
         start = Date.now();
-        q.search(newValue+1);
+        q.search(newValue);
         result['Search'] = Date.now() - start;
 
         return result;

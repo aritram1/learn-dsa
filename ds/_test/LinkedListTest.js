@@ -6,12 +6,12 @@ const populateWithData = new util().populateWithData;
 export default class LinkedListTest{
     static run(batchSize){
         let result = {};
-        let newValue = batchSize + 1;
+        let newValue = -1;
 
         let ll = new SingleLinkedList();
         let start = Date.now();
         ll = populateWithData(ll, batchSize);
-        result['Init'] = Date.now() - start;
+        result[`Init(${batchSize.toLocaleString()})`] = Date.now() - start;
 
         // add
         start = Date.now();

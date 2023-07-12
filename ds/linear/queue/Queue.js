@@ -3,42 +3,38 @@ export default class Queue {
   Queue() {
     this.head = null;
     this.tail = null;
+    this.debug = false;
+    this.length = 0;
+  }
+
+  isEmpty(){
+    return this.head == null;
   }
 
   // default behavior is to add at the end
   add(val) {
     let newNode = new Node(val);
-    newNode.desc = newNode.desc ? newNode.desc + 1 : 1;
-    if(this.isEmpty()){
-      this.head = newNode;
-      this.tail = newNode;
-    }
-    else{
-      let currentTail = this.tail;
-      currentTail.next = newNode;
-      this.tail = newNode;
-    }
+    let last = this.tail;
+    if(last) last.next = newNode;
+    this.tail = newNode;
+    this.length++;
+    if(this.debug) console.log(val + ' added');
   }
 
-  traverse(print){
+  traverse(){
     let index = this.head;
     while(index){
-      if(print) console.log(index.val);
+      if(this.debug) console.log(index.val);
       index = index.next;
     }
   }
 
   remove() {
     if(this.isEmpty()) return;
-    let nodeToRemove = this.head;
-    if(this.head == this.tail){
-      this.head = null;
-      this.tail = null;
-    }
-    else{
-      this.head = nodeToRemove.next;
-    }
-    return nodeToRemove.val;
+    let first = this.head;
+    this.head = first.next;
+    this.length--;
+    return first.val;
   }
 
   peek(){
@@ -59,9 +55,5 @@ export default class Queue {
     }
     console.log(found ? `${val} is found in Queue` : `${val} is not found in Queue`);
     return matchingNode;
-  }
-
-  isEmpty(){
-    return this.head == null;
   }
 }
