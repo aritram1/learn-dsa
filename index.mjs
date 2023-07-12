@@ -1,6 +1,6 @@
 const batchSize = Math.pow(10, 5);
 let result = {};
-console.log(`Batch Size => ${batchSize}`);
+console.log(`Batch Size => ${batchSize.toLocaleString()}`);
 
 // Test LinkedList perf
 import LinkedListTest from './ds/_test/LinkedListTest.js';
