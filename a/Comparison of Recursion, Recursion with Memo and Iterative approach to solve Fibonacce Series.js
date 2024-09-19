@@ -42,3 +42,13 @@ console.timeEnd();
 console.time();
 console.log(`FibonacciR(${n}) => ${fibR(n)}`);
 console.timeEnd();
+
+
+// == Result == //
+Calculating Fibonacci series for 30 elements..
+FibonacciI(30) => 832040
+default: 0.172119140625 ms // fast, no space required. Time complexity O(n)
+FibonacciRM(30) => 832040
+default: 0.14208984375 ms // fast but with O(n) space complexity. Time complexity O(n)
+FibonacciR(30) => 832040
+default: 18.050048828125 ms // slowest - O(2^n)
